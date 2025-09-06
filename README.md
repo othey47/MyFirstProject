@@ -1,202 +1,185 @@
-# 🎓 School of Excellence Database Management System
+# 🏫 SchoolOfExcellence SQL Project
+
+<div align="center">
+
+**Database:** MySQL | **Language:** SQL | **Status:** Complete
+
+</div>
+
+---
+
+## 📋 Table of Contents
+- [Description](#-description)
+- [Database Schema](#-database-schema)
+- [Features / Requirements Implemented](#-features--requirements-implemented)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [File Structure](#-file-structure)
+
+---
 
 ## 📖 Description
 
-This project implements a comprehensive **database management system** for **School of Excellence** (مدرسة التميز للتعليم الثانوي). The system centralizes and manages information for **students**, **teachers**, and **subjects** using **MySQL**.
+This project implements a database schema and SQL operations for a school management system called **SchoolOfExcellence**. It merges two assignments:
 
-### ✨ Key Features Demonstrated
-- 🗄️ **Database Creation** - Setting up the main database
-- 📋 **Table Creation** - Students, Teachers, and Subjects tables
-- 📝 **Data Insertion** - Sample records for all entities
-- 🔍 **Data Retrieval** - Querying and displaying information
-- 📊 **Sorting Operations** - Ordering results by name
-- 🏷️ **Column Aliasing** - Alternative column names
-- ✏️ **Record Updates** - Modifying existing data
-- 🔄 **Table Modifications** - Renaming table structures
-- 💬 **Documentation** - Comments for all SQL operations
+**Assignment 1:** Create and populate tables for Students, Teachers, and Subjects.
 
-## 📂 Project Files
+**Assignment 2:** Perform various SQL queries and operations on the Students and Subjects tables, including creating filtered tables, applying aggregate and string functions, and updating data.
 
-| File | Description |
-|------|-------------|
-| `school_of_excellence.sql` | 📜 Complete SQL script with database setup, table creation, data insertion, and operations |
+The project demonstrates practical SQL skills such as:
+- Table creation
+- Data insertion
+- Selection queries
+- Updates
+- Use of aggregate and string functions
 
-## ⚙️ Installation & Usage
+---
+
+## 🗃️ Database Schema
+
+### Students Table
+| Column | Description |
+|--------|-------------|
+| `id` | Student identifier |
+| `name` | Student's name |
+| `birth_date` | Date of birth |
+| `gender` | Gender |
+| `join_date` | Date of enrollment |
+| `email` | Email address |
+| `level` | Academic level |
+| `track` | Academic track |
+| `gpa` | Grade Point Average |
+
+### Teachers Table
+| Column | Description |
+|--------|-------------|
+| `id` | Teacher identifier |
+| `name` | Teacher's name |
+| `birth_date` | Date of birth |
+| `gender` | Gender |
+| `email` | Email address |
+| `office_number` | Office location |
+
+### Subjects Table
+| Column | Description |
+|--------|-------------|
+| `id` | Subject identifier |
+| `name` | Subject name |
+
+---
+
+## ✨ Features / Requirements Implemented
+
+### Table Creation
+- ✅ Creation of `top_students` table for students with GPA > 4.5
+- ✅ Creation of `failed_students` table for students with GPA < 3
+
+### Query Operations
+- ✅ Display students whose names start with 'A'
+- ✅ Display students whose names have exactly 4 characters
+- ✅ Show total number of students in level 2
+- ✅ Show distinct student tracks
+- ✅ Display subject names in uppercase
+
+### Aggregate Functions
+- ✅ Calculate average GPA (AVG)
+- ✅ Find maximum GPA (MAX)
+- ✅ Find minimum GPA (MIN)
+- ✅ Calculate floor of average GPA
+
+### Data Updates
+- ✅ Update gender values from 'F'/'M' to 'Female'/'Male'
+- ✅ Increase GPA by 0.25 for students with GPA less than 5
+
+---
+
+## 🚀 Installation
 
 ### Prerequisites
-- 🐬 MySQL Server 5.7 or higher
-- 🛠️ MySQL Workbench or command line interface
+- MySQL or compatible SQL server installed
+- Command line access or MySQL Workbench
 
-### Setup Steps
-1. **Clone the repository:**
+### Steps
+1. **Clone or download this project**
    ```bash
-   git clone https://github.com/yourusername/school-of-excellence-database.git
-   cd school-of-excellence-database
+   git clone <repository-url>
+   cd schoolofexcellence-sql
    ```
 
-2. **Start MySQL server:**
+2. **Run the SQL script**
    ```bash
-   mysql -u root -p
+   mysql -u your_username -p < assignment1_2_merged.sql
    ```
 
-3. **Execute the SQL script:**
-   ```bash
-   mysql> source school_of_excellence.sql
+3. **Verify installation**
+   ```sql
+   USE schoolofexcellence;
+   SHOW TABLES;
    ```
 
-## 🗄️ Database Schema
+---
 
-### 👩‍🎓 Students Table
+## 💻 Usage
 
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | INT | 🔑 Unique student identifier |
-| `name` | VARCHAR(100) | 👤 Student's full name |
-| `birth_date` | DATE | 📅 Date of birth |
-| `gender` | CHAR(1) | ⚥ Gender ('M' or 'F') |
-| `join_date` | DATE | 📆 Enrollment date |
-| `email` | VARCHAR(100) | 📧 Email address |
-| `level` | TINYINT | 📚 Academic level (1-6) |
-| `track` | VARCHAR(10) | 🎯 Science or Arts track |
-| `gpa` | DECIMAL(5,2) | 📈 Grade Point Average |
-
-### 👨‍🏫 Teachers Table
-
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | INT | 🔑 Unique teacher identifier |
-| `name` | VARCHAR(100) | 👤 Teacher's full name |
-| `birth_date` | DATE | 📅 Date of birth |
-| `gender` | CHAR(1) | ⚥ Gender ('M' or 'F') |
-| `email` | VARCHAR(100) | 📧 Email address |
-| `office_number` | INT | 🏢 Office number |
-
-### 📚 Subjects Table
-
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | INT | 🔑 Unique subject identifier |
-| `name` | VARCHAR(100) | 📖 Subject name |
-
-## 🛠️ SQL Operations Examples
-
-### 🗄️ Database Setup
+### Basic Queries
 ```sql
--- 1️⃣ Create the database
-CREATE DATABASE SchoolOfExcellence;
-
--- 2️⃣ Use the database
-USE SchoolOfExcellence;
-```
-
-### 📋 Table Creation
-```sql
--- 3️⃣ Create Students table
-CREATE TABLE Students (
-    id INT PRIMARY KEY,
-    name VARCHAR(100),
-    birth_date DATE,
-    gender CHAR(1),
-    join_date DATE,
-    email VARCHAR(100),
-    level TINYINT,
-    track VARCHAR(10),
-    gpa DECIMAL(5,2)
-);
-```
-
-### 🔍 Data Retrieval
-```sql
--- Display all tables
-SHOW TABLES;
-
 -- View all students
-SELECT * FROM Students;
+SELECT * FROM students;
 
--- Sort students by name (ascending)
-SELECT * FROM Students ORDER BY name ASC;
+-- View top students
+SELECT * FROM top_students;
+
+-- View failed students
+SELECT * FROM failed_students;
 ```
 
-### 🏷️ Column Aliasing
+### Sample Operations
 ```sql
--- Use alternative column names
-SELECT id, name AS 'Student Name', level, gpa FROM Students;
+-- Students whose names start with 'A'
+SELECT name FROM students WHERE name LIKE 'A%';
+
+-- Students with 4-character names
+SELECT name FROM students WHERE LENGTH(name) = 4;
+
+-- Count students in level 2
+SELECT COUNT(*) FROM students WHERE level = 2;
+
+-- Distinct tracks
+SELECT DISTINCT track FROM students;
+
+-- Subjects in uppercase
+SELECT UPPER(name) FROM subjects;
 ```
 
-### ✏️ Data Updates
+### Aggregate Functions
 ```sql
--- Update student email
-UPDATE Students
-SET email = 'yzw-xaqw@example.com'
-WHERE id = 3;
-
--- Update teacher office number
-UPDATE Teachers
-SET office_number = 100
-WHERE id = 1;
+-- GPA statistics
+SELECT 
+    AVG(gpa) as average_gpa,
+    MAX(gpa) as max_gpa,
+    MIN(gpa) as min_gpa,
+    FLOOR(AVG(gpa)) as floor_avg_gpa
+FROM students;
 ```
 
-### 🔄 Table Modifications
-```sql
--- Rename table
-RENAME TABLE Subjects TO school_Subjects;
-RENAME TABLE school_Subjects TO Subjects;
+---
+
+## 📁 File Structure
+
+```
+schoolofexcellence-sql/
+├── README.md
+├── assignment1_2_merged.sql
+└── (additional project files)
 ```
 
-## 📊 Sample Data
+---
 
-The database includes:
-- **👥 10 Students** - Sample records with diverse academic levels and tracks
-- **👨‍🏫 10 Teachers** - Faculty members with office assignments
-- **📚 7 Subjects** - Core academic subjects (Math, Physics, Chemistry, Biology, English, History, Geography)
+<div align="center">
 
-## ✅ Project Requirements Status
+**Built with SQL for educational purposes**
 
-| Requirement | Status | Details |
-|-------------|--------|---------|
-| 🗄️ Database Creation | ✅ Completed | SchoolOfExcellence database |
-| 📋 Table Creation | ✅ Completed | Students, Teachers, Subjects |
-| 📊 Show Tables | ✅ Completed | Display available tables |
-| 📝 Data Insertion | ✅ Completed | 10 students, 10 teachers, 7 subjects |
-| 🔍 Display Contents | ✅ Completed | Show all table contents |
-| 📊 Sorting | ✅ Completed | Students ordered by name |
-| 🏷️ Column Aliasing | ✅ Completed | Alternative names for columns |
-| ✏️ Data Updates | ✅ Completed | Student email & teacher office updates |
-| 🔄 Table Modifications | ✅ Completed | Table renaming functionality |
-| 💬 Comments | ✅ Completed | Numbered comments throughout |
-
-## 🎯 Key Learning Outcomes
-
-This project demonstrates proficiency in:
-
-- **Database Design** 🏗️ - Creating normalized table structures
-- **SQL DDL** 📋 - Data Definition Language operations
-- **SQL DML** 📝 - Data Manipulation Language operations
-- **Query Optimization** ⚡ - Efficient data retrieval methods
-- **Data Integrity** 🔒 - Maintaining consistent database state
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin feature/new-feature`)
-5. Create a Pull Request
-
-
-## 📌 Project Summary
-
-This **School of Excellence Database Management System** successfully implements all core database operations using MySQL. The project showcases fundamental SQL skills including database creation, table design, data manipulation, and query optimization.
-
-### 🎯 Final Statistics
-- **Database**: 1 (SchoolOfExcellence)
-- **Tables**: 3 (Students, Teachers, Subjects)
-- **Total Records**: 27 (10 students + 10 teachers + 7 subjects)
-- **Operations Performed**: 12+ (Create, Insert, Select, Update, Rename)
-- **Code Quality**: Fully commented with step-by-step documentation
-
-**🏆 Project Status: Complete and Fully Functional**
-
+</div>
 
 ## 📝 License
 
