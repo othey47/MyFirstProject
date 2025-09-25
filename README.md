@@ -2,7 +2,7 @@
 
 <div align="center">
 
-**Database:** MySQL | **Language:** SQL | **Status:** Complete
+**Database:** MySQL | **Language:** SQL | **Status:** Not Complete
 
 </div>
 
